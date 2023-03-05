@@ -6,8 +6,8 @@ const app = express();
 
 const pool = require("./config/database.js");
 
-app.get("/", (req, res) => {
-  
+app.get("/players", (req, res) => {
+
   pool.getConnection(function (error, connection) {
     if (error) {
       console.log("server error");
