@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql": "^2.18.1"
   },
@@ -11,7 +12,6 @@
   "description": "asdasd",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://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@github.com/MolnKriszt/feladat.git"
