@@ -25,6 +25,28 @@ app.get("/players", (req, res) => {
   });
 });
 
+app.get("/players/:id",(req, res)=>{
+  const id = req.params.id;
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      console.log("server error");
+      return;
+    }
+  const sql = `
+  SELECT * FROM players
+  WHERE id = ?
+  `;
+    connection.query(sql, [id], (error, results, fields) => {
+      if (error) {
+        console.log("sql error");
+        return;
+      }
+      res.send(results[0]);
+    });
+    connection.release();
+  });
+});
+
 app.listen(process.env.APP_PORT, () => {
   console.log(`Data server, listen port: ${process.env.APP_PORT}`);
 });
