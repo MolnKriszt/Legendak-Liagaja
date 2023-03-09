@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require('express');
 const mysql = require("mysql");
 const app = express();
+const sanitizeHtml = require('sanitize-html');
+
 
 const pool = require("./config/database.js");
 
