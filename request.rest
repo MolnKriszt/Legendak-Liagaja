@@ -1,5 +1,0 @@
-### get players
-get http://localhost:3000/players
-
-### get player by id
-get http://localhost:3000/players/28
