@@ -1,0 +1,64 @@
+
+### get everything of players
+get http://localhost:3000/players
+
+
+### get players by id
+get http://localhost:3000/player/157
+
+
+### post player
+post http://localhost:3000/players
+Content-Type: application/json
+
+{
+    "Name": "Briarss",
+    "laneid": "5",
+    "teamid": "6",
+    "rankid": "1"
+}
+
+### delete player by id
+delete http://localhost:3000/players/157
+
+### put player
+put http://localhost:3000/players/157
+Content-Type: application/json
+
+{
+    "Name": "Briarss",
+    "laneid": "5",
+    "teamid": "6",
+    "rankid": "2"
+}
+
+
+
+
+
+### get all teams
+get http://localhost:3000/teams
+
+### get teams by id
+get http://localhost:3000/teams/7
+
+### post teams
+post http://localhost:3000/teams
+Content-Type: application/json
+
+{
+    "id": "7",
+    "TeamName": "nemtudom"
+}
+
+### delete teams by id
+delete http://localhost:3000/teams/7
+
+### put team
+put http://localhost:3000/teams/7
+Content-Type: application/json
+
+{
+    "id": "7",
+    "TeamName": "tudomnem"
+}
