@@ -1,11 +1,12 @@
 {
-  "name": "15_mysql",
+  "name": "back_end",
   "version": "1.0.0",
   "description": "npm init -y",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "proddev": "node server.js"
+    "proddev": "node server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
