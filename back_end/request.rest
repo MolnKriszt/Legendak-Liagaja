@@ -4,7 +4,7 @@ get http://localhost:3000/players
 
 
 ### get players by id
-get http://localhost:3000/player/157
+get http://localhost:3000/player/158
 
 
 ### post player
