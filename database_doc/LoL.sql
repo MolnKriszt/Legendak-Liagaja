@@ -23,6 +23,5 @@ INSERT INTO players
 SELECT * FROM players
   WHERE id = 1;
 
-UPDATE players SET Name = 'asd'
 
   

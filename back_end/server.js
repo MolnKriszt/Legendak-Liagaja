@@ -4,6 +4,7 @@ const express = require("express");
 const mysql = require("mysql");
 const app = express();
 const sanitizeHtml = require("sanitize-html");
+const cors = require("cors"); 
 
 const pool = require("./config/database.js");
 const {
@@ -18,6 +19,13 @@ const {
 
 //#region middlewares
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  })
+);
 //#endregion middlewares
 
 //#region players
@@ -37,6 +45,27 @@ app.get("/players", (req, res) => {
     connection.release();
   });
 });
+//#region oderby
+  //oder by name
+  app.get("/OrByName", (req, res) => {
+    pool.getConnection(function (error, connection) {
+      if (error) {
+        sendingInfo(res, 0, "server error", [], 403)
+        return;
+      }
+      const sql = `SELECT p.id,p.Name,l.lane,r.rank,t.TeamName FROM players as p
+      INNER JOIN lanes l on p.laneid = l.id
+      INNER JOIN ranks r on p.rankid = r.id
+      INNER JOIN teams t on p.teamid = t.id;
+      ORDER by p.Name`;
+      connection.query(sql, (error, results, fields) => {
+        sendingGet(res, error, results);
+      });
+      connection.release();
+    });
+  });
+//#endregion orderby
+
 
 app.get("/player/:id", (req, res) => {
   const id = req.params.id;
