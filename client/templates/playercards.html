@@ -12,34 +12,40 @@
     <div class="container-fluid my-container p-3 mb-2 ">
 
       <!--#region Head -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="https://www.leagueoflegends.com/hu-hu/">League of Legends</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"><button type="button" class="btn btn-dark" onclick="GetTable()"><i class="bi bi-table"></i></button></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><button type="button" class="btn btn-dark" onclick="getCards()"><i class="bi bi-person-badge-fill"></i></button></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <div class="d-flex justify-content-center">
+        <h1>League of Legends</h1>
+      </div>
       <!--#endregion Head -->
       
       <!--#region Menü -->
-      <!-- <p class="d-flex mb-2">
+      <p class="d-flex justify-content-between mb-2">
+        <button type="button" class="btn btn-dark" onclick="GetTable()"><i class="bi bi-table"></i></button>
         <button type="button" class="btn btn-dark" onclick="Addplayer()"><i class="bi bi-plus-lg"></i></button>
-      </p> -->
+
+      </p>
       <!--#endregion Menü -->
       
       <!--#region Content -->
-      <div class="d-flex justify-content-center" id="contentBox"></div>
+      <div class="d-flex justify-content-center" id="contentBox">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../pictures/Ming.png" class="card-img-top" alt="...">
+                        <div class="row">
+                            <div class="col m-2">
+                            <img src="../ranks/Challenger.png" class="img-fluid" alt="${player.rank}" style="max-width: 100px; max-height: 100px;">
+                            <h1 class="blockquote">asd</h3>
+                            </div>
+                            <div class="col align-middle m-2">
+                                <img src="../lanes/Adc.png" class="img-fluid" alt="${player.rank}" style="max-width: 80px; max-height: 80px;">
+                            </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
       <!--#endregion Content -->
 
       <!--#region modal -->

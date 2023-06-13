@@ -35,7 +35,7 @@ app.get("/players", (req, res) => {
       sendingInfo(res, 0, "server error", [], 403)
       return;
     }
-    const sql = `SELECT p.id,p.Name,l.lane,r.rank,t.TeamName FROM players as p
+    const sql = `SELECT p.id,p.Name,l.lane,r.id as rankid,r.rank,t.TeamName FROM players as p
     INNER JOIN lanes l on p.laneid = l.id
     INNER JOIN ranks r on p.rankid = r.id
     INNER JOIN teams t on p.teamid = t.id;`;
@@ -287,6 +287,22 @@ app.delete("/teams/:id", (req, res) => {
 });
 
 //#endregion trips
+
+//#region lanes
+app.get("/lanes", (req, res) => {
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingInfo(res, 0, "server error", [], 403)
+      return;
+    }
+    const sql = "SELECT * FROM lanes";
+    connection.query(sql, (error, results, fields) => {
+      sendingGet(res, error, results);
+    });
+    connection.release();
+  });
+});
+//#endregion lanes
 
 function mySanitizeHtml(data) {
   return sanitizeHtml(data, {
