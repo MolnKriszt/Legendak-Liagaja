@@ -13,12 +13,12 @@ async function getCards(){
   function RenderCards() {
     let htmlElement = `
       <div class="container">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
       `
     for (const player of players){
       htmlElement += `
-          <div class="col p-3">
-            <div class="card" style="width: 18rem;">
+          <div class="col">
+            <div class="card">
               <img src="./pictures/${player.Name}.png" class="card-img-top" alt="...">
               <h5 class="card-title m-2">${player.Name}</h5>
               <div class="row">
@@ -43,8 +43,57 @@ async function getCards(){
     contentBox.innerHTML = htmlElement;
   }
 }
-async function Addplayer(){
+
+async function AddTeam(){
   const url = "http://localhost:3000/teams";
+  const response = await fetch(url);
+  const data = await response.json();
+  const teams = data.data;
+  console.log(teams[0].TeamName);
+  let htmlElement = `
+  <div class="row">
+    <div class="col my-border">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Your team</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+    </div>
+    <div class="col my-border">
+      <table class="table table-striped table-hover w-auto">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+  `
+  
+  for (const team of teams){
+    htmlElement += 
+    `
+      <tr>
+        <th scope="row">${team.TeamName}</th>
+        <td><button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+        <td><button type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></button></td>
+      </tr>
+    `
+
+  }
+
+  htmlElement += 
+  `
+        </tbody>
+      </table>
+    </div>
+  </div>
+  `
+  contentBox.innerHTML = htmlElement;
+}
+
+async function Addplayer(){
+    const url = "http://localhost:3000/teams";
     const response = await fetch(url);
     const data = await response.json();
     const teams = data.data;
@@ -100,7 +149,8 @@ async function Addplayer(){
   htmlElement += `
         </select>
       </div>
-      <button type="button" class="btn btn-primary" onclick="addPlayer()">Játékos hozzáadása</button>
+      <button type="button" class="btn btn-primary" onclick="addPlayer()">Add player</button>
+      <button type="button" class="btn btn-primary" onclick="AddTeam()">New team</button>
     </div>
   </div>
 </div>

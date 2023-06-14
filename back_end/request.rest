@@ -50,7 +50,6 @@ post http://localhost:3000/teams
 Content-Type: application/json
 
 {
-    "id": "7",
     "TeamName": "nemtudom"
 }
 

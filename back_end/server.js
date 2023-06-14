@@ -222,9 +222,9 @@ app.post("/teams", (req, res) => {
     }
     const sql = `
     INSERT INTO teams
-    (id, TeamName)
+    (TeamName)
     VALUES
-    (?, ?)
+    (?)
     `;
     connection.query(
       sql,
